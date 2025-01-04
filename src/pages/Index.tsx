@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Search, AlertCircle } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { createWeb3Modal, defaultWagmiConfig } from '@web3modal/wagmi/react'
-import { WagmiConfig } from 'wagmi'
+import { WagmiConfig, createConfig, Config } from 'wagmi'
 import { arbitrum, mainnet } from 'viem/chains'
 
 // Initialize Web3Modal configuration
@@ -21,7 +21,7 @@ const wagmiConfig = defaultWagmiConfig({
   chains,
   projectId,
   metadata,
-})
+}) as Config
 
 createWeb3Modal({ wagmiConfig, projectId, chains })
 
