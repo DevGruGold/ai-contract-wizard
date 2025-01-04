@@ -3,7 +3,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Search, AlertCircle } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-import { createWeb3Modal, defaultConfig } from '@web3modal/wagmi/react'
+import { createWeb3Modal, defaultWagmiConfig } from '@web3modal/wagmi/react'
 import { WagmiConfig } from 'wagmi'
 import { arbitrum, mainnet } from 'viem/chains'
 
@@ -17,7 +17,7 @@ const metadata = {
 }
 
 const chains = [mainnet, arbitrum]
-const wagmiConfig = defaultConfig({
+const wagmiConfig = defaultWagmiConfig({
   chains,
   projectId,
   metadata,
