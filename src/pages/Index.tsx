@@ -1,11 +1,13 @@
 import Layout from "@/components/Layout";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Search, AlertCircle } from "lucide-react";
+import { Search, AlertCircle, Wand2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { createWeb3Modal, defaultWagmiConfig } from '@web3modal/wagmi/react'
 import { WagmiConfig } from 'wagmi'
 import { arbitrum, mainnet } from 'viem/chains'
+import { useState } from "react";
+import { Textarea } from "@/components/ui/textarea";
 
 // Initialize Web3Modal configuration
 const projectId = 'b59c16c98b22d36a30ec986c5e28dde6'
@@ -30,18 +32,38 @@ createWeb3Modal({
   chains,
   themeMode: 'light',
   themeVariables: {
-    '--w3m-z-index': '1000',
+    '--w3m-z-index': 1000,
   },
 })
 
 const Index = () => {
   const { toast } = useToast();
+  const [companyDescription, setCompanyDescription] = useState("");
 
   const handleScan = () => {
     toast({
       title: "Scanning Contracts",
       description: "AI is analyzing available opportunities..."
     });
+  };
+
+  const generateCompanyProfile = async () => {
+    toast({
+      title: "Generating Profile",
+      description: "AI is helping to enhance your company description..."
+    });
+    
+    // Here we would integrate with an AI service to enhance the description
+    // For now, we'll simulate the enhancement
+    setTimeout(() => {
+      setCompanyDescription(prev => 
+        prev + "\n\nAI Suggestions: Consider adding details about your company's core competencies, past performance, and unique value proposition."
+      );
+      toast({
+        title: "Profile Enhanced",
+        description: "AI has provided suggestions for your company profile."
+      });
+    }, 1500);
   };
 
   return (
@@ -54,6 +76,32 @@ const Index = () => {
           </div>
 
           <div className="grid gap-6">
+            <Card>
+              <CardHeader>
+                <CardTitle>Company Profile</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="flex flex-col space-y-2">
+                  <label className="text-sm font-medium">Company Description</label>
+                  <div className="flex gap-2">
+                    <Textarea 
+                      placeholder="Describe your company's capabilities and experience..."
+                      value={companyDescription}
+                      onChange={(e) => setCompanyDescription(e.target.value)}
+                      className="min-h-[100px]"
+                    />
+                  </div>
+                  <Button 
+                    onClick={generateCompanyProfile}
+                    className="w-full sm:w-auto flex items-center gap-2"
+                  >
+                    <Wand2 className="w-4 h-4" />
+                    Enhance with AI
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+
             <Card>
               <CardContent className="p-6">
                 <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
