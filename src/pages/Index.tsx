@@ -1,53 +1,133 @@
+import Layout from "@/components/Layout";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Search, AlertCircle } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
+
 const Index = () => {
+  const { toast } = useToast();
+
+  const handleScan = () => {
+    toast({
+      title: "Scanning Contracts",
+      description: "AI is analyzing available opportunities..."
+    });
+  };
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-blue-50">
-      <div className="max-w-4xl w-full p-8">
-        <div className="text-center space-y-6">
-          <h1 className="text-5xl font-bold bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
-            AI Proposals
-          </h1>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Intelligent contract opportunity scanning and bidding powered by AI
-          </p>
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 mt-12">
-            {/* Feature Cards */}
-            <div className="bg-white/70 backdrop-blur-sm p-6 rounded-xl shadow-sm border border-gray-100">
-              <div className="text-blue-400 mb-4">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                </svg>
+    <Layout>
+      <div className="container mx-auto max-w-6xl">
+        <div className="mb-8">
+          <h1 className="text-3xl font-bold mb-2">Contract Scanner</h1>
+          <p className="text-gray-600">Discover and analyze contract opportunities</p>
+        </div>
+
+        <div className="grid gap-6">
+          <Card>
+            <CardContent className="p-6">
+              <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
+                <div className="flex-1 w-full">
+                  <div className="relative">
+                    <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+                    <input
+                      type="text"
+                      placeholder="Search contracts..."
+                      className="w-full pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+                    />
+                  </div>
+                </div>
+                <Button onClick={handleScan} className="w-full md:w-auto">
+                  Start AI Scan
+                </Button>
               </div>
-              <h3 className="text-lg font-semibold text-gray-700">Smart Contract Scanning</h3>
-              <p className="text-gray-500 mt-2">Automatically discover relevant contract opportunities across federal and state systems</p>
-            </div>
-            
-            <div className="bg-white/70 backdrop-blur-sm p-6 rounded-xl shadow-sm border border-gray-100">
-              <div className="text-purple-400 mb-4">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-              <h3 className="text-lg font-semibold text-gray-700">AI-Powered Bidding</h3>
-              <p className="text-gray-500 mt-2">Leverage AI to create competitive bids based on your company's capabilities</p>
-            </div>
-            
-            <div className="bg-white/70 backdrop-blur-sm p-6 rounded-xl shadow-sm border border-gray-100">
-              <div className="text-indigo-400 mb-4">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
-              </div>
-              <h3 className="text-lg font-semibold text-gray-700">Web3 Authentication</h3>
-              <p className="text-gray-500 mt-2">Secure and seamless verification with WalletConnect integration</p>
-            </div>
+            </CardContent>
+          </Card>
+
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <Card className="bg-gradient-to-br from-blue-50 to-purple-50">
+              <CardContent className="p-6">
+                <div className="flex items-start justify-between">
+                  <div>
+                    <h3 className="font-semibold mb-2">Federal IT Services</h3>
+                    <p className="text-sm text-gray-600 mb-4">Department of Defense</p>
+                    <div className="space-y-2">
+                      <div className="flex items-center gap-2">
+                        <span className="text-sm font-medium">Value:</span>
+                        <span className="text-sm text-gray-600">$1.5M - $2M</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <span className="text-sm font-medium">Due:</span>
+                        <span className="text-sm text-gray-600">30 days</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="text-green-500">
+                    <AlertCircle className="h-5 w-5" />
+                  </div>
+                </div>
+                <div className="mt-4">
+                  <Button variant="outline" className="w-full">View Details</Button>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-gradient-to-br from-blue-50 to-purple-50">
+              <CardContent className="p-6">
+                <div className="flex items-start justify-between">
+                  <div>
+                    <h3 className="font-semibold mb-2">State Healthcare System</h3>
+                    <p className="text-sm text-gray-600 mb-4">Department of Health</p>
+                    <div className="space-y-2">
+                      <div className="flex items-center gap-2">
+                        <span className="text-sm font-medium">Value:</span>
+                        <span className="text-sm text-gray-600">$800K - $1.2M</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <span className="text-sm font-medium">Due:</span>
+                        <span className="text-sm text-gray-600">45 days</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="text-yellow-500">
+                    <AlertCircle className="h-5 w-5" />
+                  </div>
+                </div>
+                <div className="mt-4">
+                  <Button variant="outline" className="w-full">View Details</Button>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-gradient-to-br from-blue-50 to-purple-50">
+              <CardContent className="p-6">
+                <div className="flex items-start justify-between">
+                  <div>
+                    <h3 className="font-semibold mb-2">Cloud Migration</h3>
+                    <p className="text-sm text-gray-600 mb-4">State Agency</p>
+                    <div className="space-y-2">
+                      <div className="flex items-center gap-2">
+                        <span className="text-sm font-medium">Value:</span>
+                        <span className="text-sm text-gray-600">$2M - $2.5M</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <span className="text-sm font-medium">Due:</span>
+                        <span className="text-sm text-gray-600">60 days</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="text-blue-500">
+                    <AlertCircle className="h-5 w-5" />
+                  </div>
+                </div>
+                <div className="mt-4">
+                  <Button variant="outline" className="w-full">View Details</Button>
+                </div>
+              </CardContent>
+            </Card>
           </div>
-          
-          <button className="mt-8 px-8 py-3 bg-gradient-to-r from-blue-400 to-purple-400 text-white rounded-lg font-medium hover:opacity-90 transition-opacity">
-            Connect Wallet to Start
-          </button>
         </div>
       </div>
-    </div>
+    </Layout>
   );
 };
 
