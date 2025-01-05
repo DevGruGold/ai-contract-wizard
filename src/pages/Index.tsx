@@ -1,29 +1,26 @@
 import Layout from "@/components/Layout";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Search, AlertCircle, Wand2 } from "lucide-react";
-import { useToast } from "@/hooks/use-toast";
-import { createWeb3Modal, defaultWagmiConfig } from '@web3modal/wagmi/react'
-import { WagmiConfig } from 'wagmi'
-import { arbitrum, mainnet } from 'viem/chains'
-import { useState } from "react";
-import { Textarea } from "@/components/ui/textarea";
+import { createWeb3Modal, defaultWagmiConfig } from '@web3modal/wagmi/react';
+import { WagmiConfig } from 'wagmi';
+import { arbitrum, mainnet } from 'viem/chains';
+import { CompanyProfile } from "@/components/company/CompanyProfile";
+import { ContractScanner } from "@/components/contracts/ContractScanner";
+import { ContractList } from "@/components/contracts/ContractList";
 
 // Initialize Web3Modal configuration
-const projectId = 'b59c16c98b22d36a30ec986c5e28dde6'
+const projectId = 'b59c16c98b22d36a30ec986c5e28dde6';
 const metadata = {
   name: 'AI Contract Wizard',
   description: 'AI-powered contract analysis and bidding platform',
   url: 'https://aicontractwizard.com', 
   icons: ['https://avatars.githubusercontent.com/u/37784886']
-}
+};
 
-const chains = [mainnet, arbitrum]
+const chains = [mainnet, arbitrum];
 const wagmiConfig = defaultWagmiConfig({
   chains,
   projectId,
   metadata,
-})
+});
 
 // Initialize modal with WalletConnect v2
 createWeb3Modal({
@@ -34,176 +31,22 @@ createWeb3Modal({
   themeVariables: {
     '--w3m-z-index': 1000,
   },
-})
+});
 
 const Index = () => {
-  const { toast } = useToast();
-  const [companyDescription, setCompanyDescription] = useState("");
-
-  const handleScan = () => {
-    toast({
-      title: "Scanning Contracts",
-      description: "AI is analyzing available opportunities..."
-    });
-  };
-
-  const generateCompanyProfile = async () => {
-    toast({
-      title: "Generating Profile",
-      description: "AI is helping to enhance your company description..."
-    });
-    
-    // Here we would integrate with an AI service to enhance the description
-    // For now, we'll simulate the enhancement
-    setTimeout(() => {
-      setCompanyDescription(prev => 
-        prev + "\n\nAI Suggestions: Consider adding details about your company's core competencies, past performance, and unique value proposition."
-      );
-      toast({
-        title: "Profile Enhanced",
-        description: "AI has provided suggestions for your company profile."
-      });
-    }, 1500);
-  };
-
   return (
-    <WagmiConfig config={wagmiConfig}>
+    <WagmiConfig config={wagmiConfig as any}>
       <Layout>
         <div className="container mx-auto max-w-6xl">
           <div className="mb-8">
-            <h1 className="text-3xl font-bold mb-2">Contract Scanner</h1>
-            <p className="text-gray-600">Discover and analyze contract opportunities</p>
+            <h1 className="text-3xl font-bold mb-2">AI Contract Evaluator</h1>
+            <p className="text-gray-600">Discover, analyze, and evaluate contract opportunities with AI assistance</p>
           </div>
 
           <div className="grid gap-6">
-            <Card>
-              <CardHeader>
-                <CardTitle>Company Profile</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="flex flex-col space-y-2">
-                  <label className="text-sm font-medium">Company Description</label>
-                  <div className="flex gap-2">
-                    <Textarea 
-                      placeholder="Describe your company's capabilities and experience..."
-                      value={companyDescription}
-                      onChange={(e) => setCompanyDescription(e.target.value)}
-                      className="min-h-[100px]"
-                    />
-                  </div>
-                  <Button 
-                    onClick={generateCompanyProfile}
-                    className="w-full sm:w-auto flex items-center gap-2"
-                  >
-                    <Wand2 className="w-4 h-4" />
-                    Enhance with AI
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardContent className="p-6">
-                <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
-                  <div className="flex-1 w-full">
-                    <div className="relative">
-                      <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-                      <input
-                        type="text"
-                        placeholder="Search contracts..."
-                        className="w-full pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
-                      />
-                    </div>
-                  </div>
-                  <Button onClick={handleScan} className="w-full md:w-auto">
-                    Start AI Scan
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              <Card className="bg-gradient-to-br from-blue-50 to-purple-50">
-                <CardContent className="p-6">
-                  <div className="flex items-start justify-between">
-                    <div>
-                      <h3 className="font-semibold mb-2">Federal IT Services</h3>
-                      <p className="text-sm text-gray-600 mb-4">Department of Defense</p>
-                      <div className="space-y-2">
-                        <div className="flex items-center gap-2">
-                          <span className="text-sm font-medium">Value:</span>
-                          <span className="text-sm text-gray-600">$1.5M - $2M</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <span className="text-sm font-medium">Due:</span>
-                          <span className="text-sm text-gray-600">30 days</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="text-green-500">
-                      <AlertCircle className="h-5 w-5" />
-                    </div>
-                  </div>
-                  <div className="mt-4">
-                    <Button variant="outline" className="w-full">View Details</Button>
-                  </div>
-                </CardContent>
-              </Card>
-
-              <Card className="bg-gradient-to-br from-blue-50 to-purple-50">
-                <CardContent className="p-6">
-                  <div className="flex items-start justify-between">
-                    <div>
-                      <h3 className="font-semibold mb-2">State Healthcare System</h3>
-                      <p className="text-sm text-gray-600 mb-4">Department of Health</p>
-                      <div className="space-y-2">
-                        <div className="flex items-center gap-2">
-                          <span className="text-sm font-medium">Value:</span>
-                          <span className="text-sm text-gray-600">$800K - $1.2M</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <span className="text-sm font-medium">Due:</span>
-                          <span className="text-sm text-gray-600">45 days</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="text-yellow-500">
-                      <AlertCircle className="h-5 w-5" />
-                    </div>
-                  </div>
-                  <div className="mt-4">
-                    <Button variant="outline" className="w-full">View Details</Button>
-                  </div>
-                </CardContent>
-              </Card>
-
-              <Card className="bg-gradient-to-br from-blue-50 to-purple-50">
-                <CardContent className="p-6">
-                  <div className="flex items-start justify-between">
-                    <div>
-                      <h3 className="font-semibold mb-2">Cloud Migration</h3>
-                      <p className="text-sm text-gray-600 mb-4">State Agency</p>
-                      <div className="space-y-2">
-                        <div className="flex items-center gap-2">
-                          <span className="text-sm font-medium">Value:</span>
-                          <span className="text-sm text-gray-600">$2M - $2.5M</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <span className="text-sm font-medium">Due:</span>
-                          <span className="text-sm text-gray-600">60 days</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="text-blue-500">
-                      <AlertCircle className="h-5 w-5" />
-                    </div>
-                  </div>
-                  <div className="mt-4">
-                    <Button variant="outline" className="w-full">View Details</Button>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
+            <CompanyProfile />
+            <ContractScanner />
+            <ContractList />
           </div>
         </div>
       </Layout>
