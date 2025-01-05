@@ -1,4 +1,4 @@
-import { Robot, HelpCircle } from "lucide-react";
+import { Bot, HelpCircle } from "lucide-react";
 import { Button } from "./ui/button";
 import {
   HoverCard,
@@ -23,7 +23,7 @@ export const AIClerk = () => {
   return (
     <div className="bg-white shadow-md rounded-lg p-4 mb-6 flex items-center justify-between">
       <div className="flex items-center space-x-4">
-        <Robot className="h-8 w-8 text-blue-500" />
+        <Bot className="h-8 w-8 text-blue-500" />
         <div>
           <h2 className="text-lg font-semibold">Hello! I'm your AI Contract Assistant</h2>
           <p className="text-gray-600">I can help you manage contracts and evaluate bids</p>
