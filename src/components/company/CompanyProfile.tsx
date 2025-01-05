@@ -3,29 +3,19 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Wand2, Shield } from "lucide-react";
 import { Textarea } from "@/components/ui/textarea";
-import { useToast } from "@/hooks/use-toast";
+import { useAIService } from "@/utils/aiService";
 
 export const CompanyProfile = () => {
-  const { toast } = useToast();
   const [companyDescription, setCompanyDescription] = useState("");
   const [isVerified, setIsVerified] = useState(false);
+  const aiService = useAIService();
 
   const generateCompanyProfile = async () => {
-    toast({
-      title: "Generating Profile",
-      description: "AI is helping to enhance your company description..."
-    });
+    const enhancedText = await aiService.enhanceWithAI(companyDescription);
+    setCompanyDescription(enhancedText);
     
-    setTimeout(() => {
-      setCompanyDescription(prev => 
-        prev + "\n\nAI Suggestions: Consider adding details about your company's core competencies, past performance metrics, and unique value proposition. Include specific examples of successful projects and quantifiable achievements."
-      );
-      setIsVerified(true);
-      toast({
-        title: "Profile Enhanced & Verified",
-        description: "AI has verified and enhanced your company profile."
-      });
-    }, 1500);
+    const verification = await aiService.verifySubmission(enhancedText);
+    setIsVerified(verification.verified);
   };
 
   return (
