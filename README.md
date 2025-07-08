@@ -1,69 +1,222 @@
-# Welcome to your Lovable project
+# AI Contract Wizard - XMRT-Eliza Enhanced
 
-## Project info
+🚀 **Government Procurement Automation System** powered by XMRT ecosystem and Eliza AI framework.
 
-**URL**: https://lovable.dev/projects/589db2b1-362b-4b9e-b78d-293d96038280
+## 🌟 Features
 
-## How can I edit this code?
+### 🤖 AI-Powered Automation
+- **Executive Procurement AI**: Strategic oversight and decision-making
+- **Vendor Evaluation AI**: Automated vendor assessment and scoring
+- **Compliance AI**: Real-time regulatory compliance monitoring
+- **Contract Generation AI**: Intelligent contract creation and management
+- **Financial AI**: Treasury management and payment processing
 
-There are several ways of editing your application.
+### 🔗 XMRT Ecosystem Integration
+- **XMART Token Payments**: Instant, low-cost vendor payments
+- **DeFi Treasury Management**: Yield optimization and liquidity provision
+- **DAO Governance**: Decentralized decision-making for major procurement decisions
+- **Monero Privacy**: Secure, private communications and sensitive data protection
+- **Blockchain Transparency**: Immutable audit trails and public accountability
 
-**Use Lovable**
+### 🛡️ Government-Grade Security
+- Multi-factor authentication and role-based access control
+- End-to-end encryption for sensitive communications
+- Comprehensive audit logging and compliance reporting
+- Federal security standards compliance (FISMA, FedRAMP ready)
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/589db2b1-362b-4b9e-b78d-293d96038280) and start prompting.
+### 📊 Advanced Analytics
+- Real-time procurement performance dashboards
+- Predictive analytics for vendor performance and risk assessment
+- Cost optimization recommendations and budget analysis
+- Market intelligence and competitive analysis
 
-Changes made via Lovable will be committed automatically to this repo.
+## 🏗️ Architecture
 
-**Use your preferred IDE**
+```
+ai-contract-wizard/
+├── frontend/                 # React TypeScript frontend
+│   ├── src/
+│   │   ├── components/      # UI components
+│   │   ├── pages/           # Application pages
+│   │   └── services/        # API services
+├── backend/                 # Node.js TypeScript backend
+│   ├── src/
+│   │   ├── agents/          # AI agent implementations
+│   │   ├── api/             # REST API routes
+│   │   ├── services/        # Business logic
+│   │   └── config/          # Configuration
+└── docs/                    # Documentation
+    ├── ARCHITECTURE.md      # System architecture
+    └── ANALYSIS.md          # Current state analysis
+```
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## 🚀 Quick Start
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### Prerequisites
+- Node.js 18+
+- MongoDB
+- Redis
+- Git
 
-Follow these steps:
+### Installation
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+```bash
+# Clone the repository
+git clone https://github.com/DevGruGold/ai-contract-wizard.git
+cd ai-contract-wizard
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+# Install all dependencies
+npm run install:all
 
-# Step 3: Install the necessary dependencies.
-npm i
+# Copy environment variables
+cp backend/.env.example backend/.env
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Start development servers
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+### Environment Setup
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+1. **Backend Configuration** (`backend/.env`):
+   ```env
+   # Database
+   MONGODB_URI=mongodb://localhost:27017/ai-contract-wizard
+   REDIS_URL=redis://localhost:6379
+   
+   # JWT
+   JWT_SECRET=your-super-secret-jwt-key
+   
+   # XMRT Ecosystem
+   XMART_TOKEN_ADDRESS=0x...
+   BLOCKCHAIN_RPC_URL=https://mainnet.infura.io/v3/your-project-id
+   
+   # AI Configuration
+   OPENAI_API_KEY=your-openai-api-key
+   ELIZA_API_KEY=your-eliza-api-key
+   ```
 
-**Use GitHub Codespaces**
+2. **Start Services**:
+   ```bash
+   # Frontend (React + Vite)
+   npm run dev:frontend    # http://localhost:5173
+   
+   # Backend (Node.js + Express)
+   npm run dev:backend     # http://localhost:3001
+   
+   # Both simultaneously
+   npm run dev
+   ```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## 📱 Application Features
 
-## What technologies are used for this project?
+### 🏛️ Government Dashboard
+- **Contract Management**: Create, manage, and monitor procurement contracts
+- **Vendor Portal**: Vendor registration, qualification, and performance tracking
+- **Compliance Center**: Real-time compliance monitoring and reporting
+- **Analytics Hub**: Procurement insights and performance metrics
 
-This project is built with .
+### 🤝 Vendor Interface
+- **Bid Submission**: Streamlined proposal submission process
+- **Performance Tracking**: Real-time performance metrics and feedback
+- **Payment Status**: Transparent payment tracking and history
+- **Communication Portal**: Secure messaging with procurement officers
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+### 🔍 Public Transparency
+- **Public Contracts**: Searchable database of public procurement contracts
+- **Vendor Directory**: Public vendor information and performance ratings
+- **Spending Analytics**: Government spending transparency and analysis
+- **Audit Trails**: Blockchain-verified procurement activity logs
 
-## How can I deploy this project?
+## 🔧 API Endpoints
 
-Simply open [Lovable](https://lovable.dev/projects/589db2b1-362b-4b9e-b78d-293d96038280) and click on Share -> Publish.
+### Core APIs
+- `GET /api/v1/contracts` - Contract management
+- `GET /api/v1/vendors` - Vendor operations
+- `GET /api/v1/agents` - AI agent interactions
+- `GET /api/v1/xmrt` - XMRT ecosystem integration
 
-## I want to use a custom domain - is that possible?
+### AI Agent APIs
+- `POST /api/v1/agents/executive/evaluate` - Executive procurement evaluation
+- `POST /api/v1/agents/vendor/assess` - Vendor assessment
+- `POST /api/v1/agents/compliance/check` - Compliance verification
+- `POST /api/v1/agents/contract/generate` - Contract generation
 
-We don't support custom domains (yet). If you want to deploy your project under your own domain then we recommend using Netlify. Visit our docs for more details: [Custom domains](https://docs.lovable.dev/tips-tricks/custom-domain/)
+### XMRT Integration APIs
+- `POST /api/v1/xmrt/payments` - Token payment processing
+- `GET /api/v1/xmrt/treasury` - Treasury management
+- `POST /api/v1/xmrt/governance` - DAO governance actions
+
+## 🧪 Testing
+
+```bash
+# Run all tests
+npm test
+
+# Frontend tests
+npm run test:frontend
+
+# Backend tests
+npm run test:backend
+
+# E2E tests
+npm run test:e2e
+```
+
+## 🚀 Deployment
+
+### Production Build
+```bash
+# Build all components
+npm run build
+
+# Start production server
+npm start
+```
+
+### Docker Deployment
+```bash
+# Build and run with Docker Compose
+docker-compose up -d
+```
+
+### Cloud Deployment
+- **Frontend**: Vercel, Netlify, or AWS S3 + CloudFront
+- **Backend**: Railway, Heroku, or AWS ECS
+- **Database**: MongoDB Atlas or AWS DocumentDB
+- **Cache**: Redis Cloud or AWS ElastiCache
+
+## 📚 Documentation
+
+- [System Architecture](docs/ARCHITECTURE.md) - Comprehensive system design
+- [Current State Analysis](docs/ANALYSIS.md) - Analysis of existing system
+- [API Documentation](docs/API.md) - Complete API reference
+- [Deployment Guide](docs/DEPLOYMENT.md) - Production deployment instructions
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🔗 Related Projects
+
+- [XMRT Ecosystem](https://xmrt.io) - Core XMRT platform
+- [Eliza AI Framework](https://github.com/ai16z/eliza) - AI agent framework
+- [XMRT AI Organization](https://github.com/DevGruGold/xmrt-ai-organization) - Autonomous AI organization
+
+## 📞 Support
+
+- **Issues**: [GitHub Issues](https://github.com/DevGruGold/ai-contract-wizard/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/DevGruGold/ai-contract-wizard/discussions)
+- **Email**: support@xmrt.io
+
+---
+
+**Built with ❤️ by DevGruGold | Powered by XMRT Ecosystem & Eliza AI**
+
